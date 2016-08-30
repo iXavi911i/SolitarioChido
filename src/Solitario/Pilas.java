@@ -61,6 +61,8 @@ public abstract  class Pilas implements Operaciones{
 
     public abstract void sacarCartas(int posicion); //template method design
     
+    //public void sacarCartas(int posision){}; //asi estaba antes
+    
       public void setPosicioX(int p)
   {
       posicionX = p;
