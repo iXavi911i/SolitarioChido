@@ -2,7 +2,7 @@ package Solitario;
 import java.util.ArrayList;
 
 public class PiladeBaraja extends Pilas{
-           
+
     public PiladeBaraja(int x, int y){
         super(x,y,0);
     }

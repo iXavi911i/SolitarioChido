@@ -46,5 +46,4 @@ public class PilaDePalos extends Pilas{
         int tamaño = cartas.size();                 
         cartas.remove(posicion-1);
     }
-    //ukwgudausd 
 }

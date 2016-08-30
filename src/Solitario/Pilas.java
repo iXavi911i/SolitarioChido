@@ -59,7 +59,7 @@ public abstract  class Pilas implements Operaciones{
             cartas.add(cartita);
     }
 
-    public  void sacarCartas(int posicion){}
+    public  void sacarCartas(int posicion){} //template method design
     
       public void setPosicioX(int p)
   {

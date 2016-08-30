@@ -13,14 +13,37 @@ public class Carta extends Canvas{
     private int pila;
     private boolean primera=true;
   
-    public Carta(int palo, int color, int num,boolean reverso,String ruta, int pilas){
-        this.palo=palo;
-        this.color=color;
-        this.num=num;
-        this.reverso=reverso;
-        this.rutas=ruta;
-        this.pila=pilas;
+    public Carta(CartaBuilder builder){
+        this.palo=builder.palo;
+        this.color=builder.color;
+        this.num=builder.num;
+        this.reverso=builder.reverso;
+        this.rutas=builder.rutas;
+        this.pila=builder.pila;
     }
+    
+    public static class CartaBuilder{
+        private int palo; // valores 1 corazones, 2 espadas, 3 diamantes y 4 treboles
+        private int color; // valores 1=rojo, 2=negro
+        private int num; // valores del 1 al 13
+        private boolean reverso; // indica si la carta esta volteada o de reverso
+        private String rutas;
+        private int pila;
+        
+        public CartaBuilder(int palo, int color, int num,boolean reverso,String ruta, int pilas){ //builder design
+            this.palo=palo;
+            this.color=color;
+            this.num=num;
+            this.reverso=reverso;
+            this.rutas=ruta;
+            this.pila=pilas;
+        }
+        
+        public Carta build(){
+            return new Carta(this);
+        }
+    }
+    
   
     public void setPalo(int palo){
         this.palo = palo;
