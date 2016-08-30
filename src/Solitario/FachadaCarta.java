@@ -5,8 +5,6 @@
  */
 package Solitario;
 
-import javax.swing.JLayeredPane;
-
 /**
  *
  * @author Xavi

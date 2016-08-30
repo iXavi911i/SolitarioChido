@@ -13,7 +13,7 @@ public class Carta extends Canvas{
     private int pila;
     private boolean primera=true;
   
-    public Carta(CartaBuilder builder){
+    private Carta(CartaBuilder builder){
         this.palo=builder.palo;
         this.color=builder.color;
         this.num=builder.num;

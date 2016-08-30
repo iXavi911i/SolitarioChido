@@ -59,6 +59,7 @@ public class Solitario_InterfazGrafica extends javax.swing.JFrame implements Act
             palo=(nCarta<13?1:nCarta<26?2:nCarta<39?3:4);
             valor=(nCarta+(nCarta<13?1:nCarta<26?-12:nCarta<39?-25:-38));
             ruta = "/Users/Xavi/Documents/NetBeans/SolitarioChido/src/mazo/palo"+palo+"_"+valor+".JPG";
+            //Builder design pattern
             cartas[nCarta] = new Carta.CartaBuilder(palo,(palo==1||palo==3?1:2),valor,!(enPila==0?false:enPila==1?true:(pila[enPila].cartas.size()==(enPila-6))),ruta,enPila).build();
             cartas[nCarta].setSize(75,98);              
             jLayeredPane1.add(cartas[nCarta]);         
@@ -147,7 +148,7 @@ public class Solitario_InterfazGrafica extends javax.swing.JFrame implements Act
     // End of variables declaration//GEN-END:variables
   
     private void nuevaCarta() {  
-        obj.nuevaCarta(pila);
+        obj.nuevaCarta(pila); //Facade design pattern
         actualizaCartas(1);
         actualizaCartas(0);
     }   
