@@ -13,6 +13,7 @@ public class Solitario_InterfazGrafica extends javax.swing.JFrame implements Act
                                             MouseMotionListener, MouseListener {
     Carta[] cartas ;
     private Pilas[] pila;
+    FachadaCarta obj;
     
     public Solitario_InterfazGrafica() {     
         getContentPane().setBackground(new java.awt.Color(0, 102, 51));
@@ -33,6 +34,7 @@ public class Solitario_InterfazGrafica extends javax.swing.JFrame implements Act
         pila[10] = new PilaDeMesa(320,140,10);        
         pila[11] = new PilaDeMesa(400,140,11);
         pila[12] = new PilaDeMesa(480,140,12);
+        obj = new FachadaCarta();
         IniciaJuego();
     }
     public void IniciaJuego(){
@@ -56,8 +58,8 @@ public class Solitario_InterfazGrafica extends javax.swing.JFrame implements Act
             }
             palo=(nCarta<13?1:nCarta<26?2:nCarta<39?3:4);
             valor=(nCarta+(nCarta<13?1:nCarta<26?-12:nCarta<39?-25:-38));
-            ruta = "C:/Users/ArelyGuadalupe/Documents/NetBeansProjects/Solitario_PatronesDiseño/src/mazo/palo"+palo+"_"+valor+".JPG";
-            cartas[nCarta] = new Carta(palo,(palo==1||palo==3?1:2),valor,!(enPila==0?false:enPila==1?true:(pila[enPila].cartas.size()==(enPila-6))),ruta,enPila);
+            ruta = "/Users/Xavi/Documents/NetBeans/SolitarioChido/src/mazo/palo"+palo+"_"+valor+".JPG";
+            cartas[nCarta] = new Carta.CartaBuilder(palo,(palo==1||palo==3?1:2),valor,!(enPila==0?false:enPila==1?true:(pila[enPila].cartas.size()==(enPila-6))),ruta,enPila).build();
             cartas[nCarta].setSize(75,98);              
             jLayeredPane1.add(cartas[nCarta]);         
             jLayeredPane1.moveToFront(cartas[nCarta]);
@@ -65,7 +67,7 @@ public class Solitario_InterfazGrafica extends javax.swing.JFrame implements Act
             cartas[nCarta].setLocation(pila[enPila].getPosicionX(),
             pila[enPila].getPosicionY()+((enPila==0||enPila==1?0:20)*pila[enPila].tamaño()));
             cartas[nCarta].addMouseMotionListener(this);
-            cartas[nCarta].addMouseListener(this); 
+            cartas[nCarta].addMouseListener(this);
         }                
     }
  
@@ -145,17 +147,11 @@ public class Solitario_InterfazGrafica extends javax.swing.JFrame implements Act
     // End of variables declaration//GEN-END:variables
   
     private void nuevaCarta() {  
-        if(pila[1].tamaño()>0){
-        pila[0].Agregar(pila[1].cartas);
-        pila[1].cartas.clear();
-        pila[1].Agregar(pila[0].cartas);
-        pila[0].sacarCartas(0);
-        System.out.println(pila[1].cartas.get(0).getesReverso());
+        obj.nuevaCarta(pila);
         actualizaCartas(1);
         actualizaCartas(0);
-        }
-    }      
-    
+    }   
+
     public void moverClick(int pilas1, int pilas2) {   
         int pila1 =pilas1;
         int pila2 =pilas2;
